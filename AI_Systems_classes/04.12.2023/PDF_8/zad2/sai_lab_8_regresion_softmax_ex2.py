@@ -31,7 +31,7 @@ y_label2 = np.random.normal(6, 1, 1000)
 
 xs = np.append(x_label1, x_label2)
 ys = np.append(y_label1, y_label2)
-labels = np.asarray([0.]*len(x_label1)+[1.]*len(x_label2))
+labels = np.asarray([[0.,1.]]*len(x_label1)+[[1.,0.]]*len(x_label2))
 labels
 
 plt.scatter(x_label1, y_label1, c='r', marker='x', s=20)
@@ -46,7 +46,7 @@ model = Sequential()
 
 """Dodajemy **jedną warstwę** (Dense) z **jednym neuronem** (units=1) z **biasem** (use_bias=True) i **liniową funkcją aktywacji** (activation="linear"):"""
 
-model.add(Dense(units = 1, use_bias=True, input_dim=2, activation = "softmax"))
+model.add(Dense(units = 2, use_bias=True, input_dim=2, activation = "softmax"))
 
 """Definiujemy **optymalizator** i **błąd** (entropia krzyżowa). **Współczynnik uczenia = 0.1**"""
 
@@ -106,7 +106,7 @@ model = Sequential()
 
 """Dodajemy **jedną warstwę** (Dense) z **jednym neuronem** (units=1) z **biasem** (use_bias=True) i **liniową funkcją aktywacji** (activation="linear"):"""
 
-model.add(Dense(units = 1, use_bias=True, input_dim=2, activation = "softmax"))
+model.add(Dense(units = 2, use_bias=True, input_dim=2, activation = "softmax"))
 
 """Definiujemy **optymalizator** i **błąd** (entropia krzyżowa). **Współczynnik uczenia = 0.1**"""
 
@@ -166,7 +166,7 @@ model = Sequential()
 
 """Dodajemy **jedną warstwę** (Dense) z **jednym neuronem** (units=1) z **biasem** (use_bias=True) i **liniową funkcją aktywacji** (activation="linear"):"""
 
-model.add(Dense(units = 1, use_bias=True, input_dim=2, activation = "softmax"))
+model.add(Dense(units = 2, use_bias=True, input_dim=2, activation = "softmax"))
 
 """Definiujemy **optymalizator** i **błąd** (entropia krzyżowa). **Współczynnik uczenia = 0.1**"""
 
@@ -226,7 +226,7 @@ model = Sequential()
 
 """Dodajemy **jedną warstwę** (Dense) z **jednym neuronem** (units=1) z **biasem** (use_bias=True) i **liniową funkcją aktywacji** (activation="linear"):"""
 
-model.add(Dense(units = 1, use_bias=True, input_dim=2, activation = "softmax"))
+model.add(Dense(units = 2, use_bias=True, input_dim=2, activation = "softmax"))
 
 """Definiujemy **optymalizator** i **błąd** (entropia krzyżowa). **Współczynnik uczenia = 0.1**"""
 
@@ -286,7 +286,7 @@ model = Sequential()
 
 """Dodajemy **jedną warstwę** (Dense) z **jednym neuronem** (units=1) z **biasem** (use_bias=True) i **liniową funkcją aktywacji** (activation="linear"):"""
 
-model.add(Dense(units = 1, use_bias=True, input_dim=2, activation = "softmax"))
+model.add(Dense(units = 2, use_bias=True, input_dim=2, activation = "softmax"))
 
 """Definiujemy **optymalizator** i **błąd** (entropia krzyżowa). **Współczynnik uczenia = 0.1**"""
 
@@ -346,7 +346,7 @@ model = Sequential()
 
 """Dodajemy **jedną warstwę** (Dense) z **jednym neuronem** (units=1) z **biasem** (use_bias=True) i **liniową funkcją aktywacji** (activation="linear"):"""
 
-model.add(Dense(units = 1, use_bias=True, input_dim=2, activation = "softmax"))
+model.add(Dense(units = 2, use_bias=True, input_dim=2, activation = "softmax"))
 
 """Definiujemy **optymalizator** i **błąd** (entropia krzyżowa). **Współczynnik uczenia = 0.1**"""
 
@@ -406,7 +406,7 @@ model = Sequential()
 
 """Dodajemy **jedną warstwę** (Dense) z **jednym neuronem** (units=1) z **biasem** (use_bias=True) i **liniową funkcją aktywacji** (activation="linear"):"""
 
-model.add(Dense(units = 1, use_bias=True, input_dim=2, activation = "softmax"))
+model.add(Dense(units = 2, use_bias=True, input_dim=2, activation = "softmax"))
 
 """Definiujemy **optymalizator** i **błąd** (entropia krzyżowa). **Współczynnik uczenia = 0.1**"""
 
@@ -466,7 +466,7 @@ model = Sequential()
 
 """Dodajemy **jedną warstwę** (Dense) z **jednym neuronem** (units=1) z **biasem** (use_bias=True) i **liniową funkcją aktywacji** (activation="linear"):"""
 
-model.add(Dense(units = 1, use_bias=True, input_dim=2, activation = "softmax"))
+model.add(Dense(units = 2, use_bias=True, input_dim=2, activation = "softmax"))
 
 """Definiujemy **optymalizator** i **błąd** (entropia krzyżowa). **Współczynnik uczenia = 0.1**"""
 
@@ -526,7 +526,7 @@ model = Sequential()
 
 """Dodajemy **jedną warstwę** (Dense) z **jednym neuronem** (units=1) z **biasem** (use_bias=True) i **liniową funkcją aktywacji** (activation="linear"):"""
 
-model.add(Dense(units = 1, use_bias=True, input_dim=2, activation = "softmax"))
+model.add(Dense(units = 2, use_bias=True, input_dim=2, activation = "softmax"))
 
 """Definiujemy **optymalizator** i **błąd** (entropia krzyżowa). **Współczynnik uczenia = 0.1**"""
 
