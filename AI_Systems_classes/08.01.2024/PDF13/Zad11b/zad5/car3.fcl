@@ -1,0 +1,83 @@
+FUNCTION_BLOCK car1
+
+
+VAR_INPUT
+dystans : REAL;
+predkosc : REAL;
+END_VAR
+
+
+VAR_OUTPUT
+zmiana_predkosci : REAL;
+END_VAR
+
+
+FUZZIFY dystans
+TERM bkrotki := (0, 1) (60, 0)  ;
+TERM krotki := (50, 0) (250, 1) (450, 0) ;
+TERM sredni := (250, 0) (500, 1) (750, 0);
+TERM dlugi := (500, 0) (650, 1) (800, 0);
+TERM bdlugi := (750, 0) (1000, 1);
+
+END_FUZZIFY
+
+
+FUZZIFY predkosc
+TERM bmala := (0, 1) (20, 0) ;
+TERM mala := (15, 0) (30, 1) (45,0);
+TERM srednia := (40,0) (60,1) (80, 0);
+TERM duza := (75, 0) (90, 1) (105, 0);
+TERM bduza := (100, 0)(120, 1);
+
+END_FUZZIFY
+
+DEFUZZIFY zmiana_predkosci
+TERM bbredukuj := (-120, 1) (-115, 0);
+TERM bredukuj := (-120, 0) (-100, 1) (-60,0);
+TERM redukuj := (-70, 0) (-50, 1) (-30,0);
+TERM utrzymaj := (-60, 0) (0, 1) (60,0);
+TERM zwiekszaj := (30, 0) (75, 1) (100,0);
+TERM bzwiekszaj := (75, 0) (120,1);
+
+
+METHOD : COG;
+
+DEFAULT := 0;
+END_DEFUZZIFY
+
+RULEBLOCK No1
+
+AND : MIN;
+
+ACT : MIN;
+
+ACCU : MAX;
+
+RULE 1 : IF dystans IS krotki AND predkosc IS bmala THEN zmiana_predkosci IS zwiekszaj;
+RULE 2 : IF dystans IS krotki AND predkosc IS mala THEN zmiana_predkosci IS utrzymaj;
+RULE 3 : IF dystans IS krotki AND predkosc IS srednia THEN zmiana_predkosci IS redukuj;
+RULE 4 : IF dystans IS krotki AND predkosc IS duza THEN zmiana_predkosci IS bredukuj;
+RULE 5 : IF dystans IS krotki AND predkosc IS bduza THEN zmiana_predkosci IS bbredukuj;
+RULE 6 : IF dystans IS bkrotki AND predkosc IS bmala THEN zmiana_predkosci IS utrzymaj;
+RULE 7 : IF dystans IS bkrotki AND predkosc IS mala THEN zmiana_predkosci IS redukuj;
+RULE 8 : IF dystans IS bkrotki AND predkosc IS srednia THEN zmiana_predkosci IS bredukuj;
+RULE 9 : IF dystans IS bkrotki AND predkosc IS duza THEN zmiana_predkosci IS bbredukuj;
+RULE 10 : IF dystans IS bkrotki AND predkosc IS bduza THEN zmiana_predkosci IS bbredukuj;
+RULE 11 : IF dystans IS sredni AND predkosc IS bmala THEN zmiana_predkosci IS bzwiekszaj;
+RULE 12 : IF dystans IS sredni AND predkosc IS mala THEN zmiana_predkosci IS zwiekszaj;
+RULE 13 : IF dystans IS sredni AND predkosc IS srednia THEN zmiana_predkosci IS utrzymaj;
+RULE 14 : IF dystans IS sredni AND predkosc IS duza THEN zmiana_predkosci IS redukuj;
+RULE 15 : IF dystans IS sredni AND predkosc IS bduza THEN zmiana_predkosci IS bredukuj;
+RULE 16 : IF dystans IS dlugi AND predkosc IS bmala THEN zmiana_predkosci IS bzwiekszaj;
+RULE 17 : IF dystans IS dlugi AND predkosc IS mala THEN zmiana_predkosci IS bzwiekszaj;
+RULE 18 : IF dystans IS dlugi AND predkosc IS srednia THEN zmiana_predkosci IS zwiekszaj;
+RULE 19 : IF dystans IS dlugi AND predkosc IS duza THEN zmiana_predkosci IS utrzymaj ;
+RULE 20 : IF dystans IS dlugi AND predkosc IS bduza THEN zmiana_predkosci IS redukuj;
+RULE 21 : IF dystans IS bdlugi AND predkosc IS bmala THEN zmiana_predkosci IS bzwiekszaj;
+RULE 22 : IF dystans IS bdlugi AND predkosc IS mala THEN zmiana_predkosci IS bzwiekszaj;
+RULE 23 : IF dystans IS bdlugi AND predkosc IS srednia THEN zmiana_predkosci IS bzwiekszaj;
+RULE 24 : IF dystans IS bdlugi AND predkosc IS duza THEN zmiana_predkosci IS bzwiekszaj;
+RULE 25 : IF dystans IS bdlugi AND predkosc IS bduza THEN zmiana_predkosci IS utrzymaj;
+
+END_RULEBLOCK
+END_FUNCTION_BLOCK

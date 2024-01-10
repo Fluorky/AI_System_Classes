@@ -1,0 +1,18 @@
+﻿  samochod_hamowanie.cpp
+C:\Users\MACIEJ\source\repos\samochod_hamowanie\samochod_hamowanie\samochod_hamowanie.cpp(429): warning C4715: "FunctionBlock_car1::membership_dystans_bdlugi”: niewszystkie ścieżki kodu zwracają wartość
+C:\Users\MACIEJ\source\repos\samochod_hamowanie\samochod_hamowanie\samochod_hamowanie.cpp(435): warning C4715: "FunctionBlock_car1::membership_dystans_bkrotki”: niewszystkie ścieżki kodu zwracają wartość
+C:\Users\MACIEJ\source\repos\samochod_hamowanie\samochod_hamowanie\samochod_hamowanie.cpp(442): warning C4715: "FunctionBlock_car1::membership_dystans_dlugi”: niewszystkie ścieżki kodu zwracają wartość
+C:\Users\MACIEJ\source\repos\samochod_hamowanie\samochod_hamowanie\samochod_hamowanie.cpp(449): warning C4715: "FunctionBlock_car1::membership_dystans_krotki”: niewszystkie ścieżki kodu zwracają wartość
+C:\Users\MACIEJ\source\repos\samochod_hamowanie\samochod_hamowanie\samochod_hamowanie.cpp(456): warning C4715: "FunctionBlock_car1::membership_dystans_sredni”: niewszystkie ścieżki kodu zwracają wartość
+C:\Users\MACIEJ\source\repos\samochod_hamowanie\samochod_hamowanie\samochod_hamowanie.cpp(462): warning C4715: "FunctionBlock_car1::membership_predkosc_bduza”: niewszystkie ścieżki kodu zwracają wartość
+C:\Users\MACIEJ\source\repos\samochod_hamowanie\samochod_hamowanie\samochod_hamowanie.cpp(468): warning C4715: "FunctionBlock_car1::membership_predkosc_bmala”: niewszystkie ścieżki kodu zwracają wartość
+C:\Users\MACIEJ\source\repos\samochod_hamowanie\samochod_hamowanie\samochod_hamowanie.cpp(475): warning C4715: "FunctionBlock_car1::membership_predkosc_duza”: niewszystkie ścieżki kodu zwracają wartość
+C:\Users\MACIEJ\source\repos\samochod_hamowanie\samochod_hamowanie\samochod_hamowanie.cpp(482): warning C4715: "FunctionBlock_car1::membership_predkosc_mala”: niewszystkie ścieżki kodu zwracają wartość
+C:\Users\MACIEJ\source\repos\samochod_hamowanie\samochod_hamowanie\samochod_hamowanie.cpp(489): warning C4715: "FunctionBlock_car1::membership_Predkoscrednia”: niewszystkie ścieżki kodu zwracają wartość
+C:\Users\MACIEJ\source\repos\samochod_hamowanie\samochod_hamowanie\samochod_hamowanie.cpp(495): warning C4715: "FunctionBlock_car1::membership_zmiana_predkosci_bbredukuj”: niewszystkie ścieżki kodu zwracają wartość
+C:\Users\MACIEJ\source\repos\samochod_hamowanie\samochod_hamowanie\samochod_hamowanie.cpp(502): warning C4715: "FunctionBlock_car1::membership_zmiana_predkosci_bredukuj”: niewszystkie ścieżki kodu zwracają wartość
+C:\Users\MACIEJ\source\repos\samochod_hamowanie\samochod_hamowanie\samochod_hamowanie.cpp(508): warning C4715: "FunctionBlock_car1::membership_zmiana_predkosci_bzwiekszaj”: niewszystkie ścieżki kodu zwracają wartość
+C:\Users\MACIEJ\source\repos\samochod_hamowanie\samochod_hamowanie\samochod_hamowanie.cpp(515): warning C4715: "FunctionBlock_car1::membership_zmiana_predkosci_redukuj”: niewszystkie ścieżki kodu zwracają wartość
+C:\Users\MACIEJ\source\repos\samochod_hamowanie\samochod_hamowanie\samochod_hamowanie.cpp(522): warning C4715: "FunctionBlock_car1::membership_zmiana_predkosci_utrzymaj”: niewszystkie ścieżki kodu zwracają wartość
+C:\Users\MACIEJ\source\repos\samochod_hamowanie\samochod_hamowanie\samochod_hamowanie.cpp(529): warning C4715: "FunctionBlock_car1::membership_zmiana_predkosci_zwiekszaj”: niewszystkie ścieżki kodu zwracają wartość
+  samochod_hamowanie.vcxproj -> C:\Users\MACIEJ\source\repos\samochod_hamowanie\Debug\samochod_hamowanie.exe

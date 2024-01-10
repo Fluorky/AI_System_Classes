@@ -1,0 +1,73 @@
+FUNCTION_BLOCK ryzyko
+
+VAR_INPUT
+    temperature : REAL;
+	target: REAL;
+END_VAR
+
+VAR_OUTPUT
+    command : REAL;
+END_VAR
+
+FUZZIFY temperature
+	TERM too_cold:= (5, 1) (10,0) ; 
+    TERM cold := (5, 0) (10, 1) (15,0);
+	TERM warm := (10, 0) (15, 1) (20,0);
+	TERM hot := (15, 0) (20, 1) (25,0);
+	TERM too_hot := (20, 0) (25, 1);
+END_FUZZIFY
+
+FUZZIFY target
+    TERM too_cold:= (5, 1) (10,0) ; 
+    TERM cold := (5, 0) (10, 1) (15,0);
+	TERM warm := (10, 0) (15, 1) (20,0);
+	TERM hot := (15, 0) (20, 1) (25,0);
+	TERM too_hot := (20, 0) (25, 1);
+END_FUZZIFY
+
+DEFUZZIFY  command
+    TERM cool := (20, 1) (40, 0);
+    TERM no_change := (30,0) (40,1) (50, 0);
+	TERM heat := (40, 0) (60, 1);
+    METHOD : COG;
+    DEFAULT := 0;
+END_DEFUZZIFY
+
+RULEBLOCK No1
+    AND : MIN;
+    ACT : MIN;
+    ACCU : MAX;
+
+ RULE 1 : IF temperature IS too_cold AND target IS too_cold THEN command IS no_change;
+ RULE 2 : IF temperature IS hot  AND target IS too_cold THEN command IS cool;
+ RULE 3 : IF temperature IS too_hot AND target IS too_cold THEN command IS cool;
+ RULE 4 : IF temperature IS cold  AND target IS too_cold THEN command IS cool;
+ RULE 5 : IF temperature IS warm AND target IS too_cold THEN command IS cool;
+ 
+ RULE 6 : IF temperature IS too_cold AND target IS cold THEN command IS heat;
+ RULE 7 : IF temperature IS warm  AND target IS cold THEN command IS cool;
+ RULE 8 : IF temperature IS hot AND target IS cold THEN command IS cool;
+ RULE 9 : IF temperature IS too_hot AND target IS cold THEN command IS cool;
+ RULE 10 : IF temperature IS cold AND target IS cold THEN command IS no_change;
+
+ RULE 11 : IF temperature IS too_cold AND target IS warm THEN command IS heat;
+ RULE 12 : IF temperature IS cold AND target IS warm THEN command IS heat;
+ RULE 13 : IF temperature IS hot AND target IS warm THEN command IS cool;
+ RULE 14 : IF temperature IS too_hot AND target IS warm THEN command IS cool;
+ RULE 15 : IF temperature IS warm AND target IS warm THEN command IS no_change;
+
+ RULE 16 : IF temperature IS too_cold AND target IS hot THEN command IS heat;
+ RULE 17 : IF temperature IS cold AND target IS hot THEN command IS heat;
+ RULE 18 : IF temperature IS warm AND target IS hot THEN command IS heat;
+ RULE 19 : IF temperature IS hot  AND target IS  hot  THEN command IS no_change;
+ RULE 20 : IF temperature IS too_hot AND target IS hot THEN command IS cool;
+ 
+ RULE 21 : IF temperature IS too_hot AND target IS too_hot THEN command IS no_change;
+ RULE 22 : IF temperature IS hot AND target IS too_hot THEN command IS heat;
+ RULE 23 : IF temperature IS warm AND target IS too_hot THEN command IS heat;
+ RULE 24 : IF temperature IS cold AND target IS too_hot THEN command IS heat;
+ RULE 25 : IF temperature IS too_cold AND target IS too_hot THEN command IS heat;
+               
+END_RULEBLOCK
+
+END_FUNCTION_BLOCK

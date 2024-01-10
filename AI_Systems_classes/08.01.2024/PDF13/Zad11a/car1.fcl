@@ -1,0 +1,43 @@
+FUNCTION_BLOCK car1
+
+VAR_INPUT
+odleglosc : REAL;
+END_VAR
+
+
+VAR_OUTPUT
+predkosc : REAL;
+END_VAR
+
+
+FUZZIFY odleglosc
+
+TERM mala  := (0, 1)  (450, 0) ;
+TERM srednia  := (250, 0) (500, 1) (750, 0);
+TERM duza := (500, 0)  (1000, 1);
+END_FUZZIFY
+
+
+DEFUZZIFY predkosc
+TERM mala := (0, 1) (20, 1) (60,0);
+TERM srednia := (20,0) (60,1) (100, 0);
+TERM duza := (60, 0) (100, 1) (120, 1);
+
+METHOD : COG;
+
+DEFAULT := 0;
+END_DEFUZZIFY
+
+RULEBLOCK No1
+
+AND : MIN;
+
+ACT : MIN;
+
+ACCU : MAX;
+
+RULE 1 : IF odleglosc IS mala THEN predkosc IS mala;
+RULE 2 : IF odleglosc IS srednia THEN predkosc IS srednia;
+RULE 3 : IF odleglosc IS duza THEN predkosc IS duza;
+END_RULEBLOCK
+END_FUNCTION_BLOCK

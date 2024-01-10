@@ -1,0 +1,59 @@
+FUNCTION_BLOCK WashingMachineController
+// Define input variables 
+VAR_INPUT 
+    water_level : REAL; // Poziom wody w pralce
+    dirt_level : REAL; // Poziom zabrudzenia
+    detergent_level : REAL; // Poziom detergentu
+END_VAR 
+
+// Define output variable 
+VAR_OUTPUT 
+    washing_time : REAL; // Czas prania
+END_VAR 
+
+FUZZIFY water_level 
+TERM low := (0, 1) (2, 1) (4, 0); 
+TERM medium := (3, 0) (5, 1) (7, 0); 
+TERM high := (6, 0) (8, 1) (10, 1); 
+END_FUZZIFY
+
+FUZZIFY dirt_level
+TERM low := (0, 1) (20, 1) (40, 0); 
+TERM medium := (30, 0) (50, 1) (70, 0); 
+TERM high := (60, 0) (80, 1) (100, 1); 
+END_FUZZIFY
+
+FUZZIFY detergent_level
+TERM low := (0, 1) (20, 1) (40, 0); 
+TERM medium := (30, 0) (50, 1) (70, 0); 
+TERM high := (60, 0) (80, 1) (100, 1); 
+END_FUZZIFY
+
+DEFUZZIFY washing_time
+TERM short := (0, 1) (10, 1) (15, 0); 
+TERM medium := (10, 0) (20, 1) (30, 0); 
+TERM long := (25, 0) (35, 1) (40, 1); 
+
+METHOD : COG; 
+DEFAULT := 0; 
+END_DEFUZZIFY
+
+RULEBLOCK WashingRules 
+AND : MIN; 
+ACT : MIN; 
+ACCU : MAX; 
+
+RULE 1 : IF water_level IS low AND dirt_level IS low AND detergent_level IS low THEN washing_time IS long; 
+RULE 2 : IF water_level IS low AND dirt_level IS medium AND detergent_level IS medium THEN washing_time IS medium; 
+RULE 3 : IF water_level IS low AND dirt_level IS high AND detergent_level IS high THEN washing_time IS short; 
+
+RULE 4 : IF water_level IS medium AND dirt_level IS low AND detergent_level IS low THEN washing_time IS medium; 
+RULE 5 : IF water_level IS medium AND dirt_level IS medium AND detergent_level IS medium THEN washing_time IS medium; 
+RULE 6 : IF water_level IS medium AND dirt_level IS high AND detergent_level IS high THEN washing_time IS short; 
+
+RULE 7 : IF water_level IS high AND dirt_level IS low AND detergent_level IS low THEN washing_time IS short; 
+RULE 8 : IF water_level IS high AND dirt_level IS medium AND detergent_level IS medium THEN washing_time IS medium; 
+RULE 9 : IF water_level IS high AND dirt_level IS high AND detergent_level IS high THEN washing_time IS long; 
+
+END_RULEBLOCK 
+END_FUNCTION_BLOCK

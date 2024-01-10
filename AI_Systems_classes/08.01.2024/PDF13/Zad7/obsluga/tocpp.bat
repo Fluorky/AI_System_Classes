@@ -1,0 +1,1 @@
+java -jar jFuzzyLogic.jar -c %1.fcl > %1.cpp

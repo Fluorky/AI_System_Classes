@@ -1,0 +1,8 @@
+﻿  Odleglosc_predkosc.cpp
+C:\Users\MACIEJ\source\repos\Odleglosc_predkosc\Odleglosc_predkosc\Odleglosc_predkosc.cpp(130): warning C4715: "FunctionBlock_car1::membership_odleglosc_duza”: niewszystkie ścieżki kodu zwracają wartość
+C:\Users\MACIEJ\source\repos\Odleglosc_predkosc\Odleglosc_predkosc\Odleglosc_predkosc.cpp(136): warning C4715: "FunctionBlock_car1::membership_odleglosc_mala”: niewszystkie ścieżki kodu zwracają wartość
+C:\Users\MACIEJ\source\repos\Odleglosc_predkosc\Odleglosc_predkosc\Odleglosc_predkosc.cpp(143): warning C4715: "FunctionBlock_car1::membership_odleglosc_srednia”: niewszystkie ścieżki kodu zwracają wartość
+C:\Users\MACIEJ\source\repos\Odleglosc_predkosc\Odleglosc_predkosc\Odleglosc_predkosc.cpp(150): warning C4715: "FunctionBlock_car1::membership_predkosc_duza”: niewszystkie ścieżki kodu zwracają wartość
+C:\Users\MACIEJ\source\repos\Odleglosc_predkosc\Odleglosc_predkosc\Odleglosc_predkosc.cpp(157): warning C4715: "FunctionBlock_car1::membership_predkosc_mala”: niewszystkie ścieżki kodu zwracają wartość
+C:\Users\MACIEJ\source\repos\Odleglosc_predkosc\Odleglosc_predkosc\Odleglosc_predkosc.cpp(164): warning C4715: "FunctionBlock_car1::membership_predkosc_srednia”: niewszystkie ścieżki kodu zwracają wartość
+  Odleglosc_predkosc.vcxproj -> C:\Users\MACIEJ\source\repos\Odleglosc_predkosc\Debug\Odleglosc_predkosc.exe

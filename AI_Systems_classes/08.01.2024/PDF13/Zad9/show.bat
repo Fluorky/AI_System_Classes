@@ -1,0 +1,1 @@
+java -jar jFuzzyLogic.jar %1.fcl

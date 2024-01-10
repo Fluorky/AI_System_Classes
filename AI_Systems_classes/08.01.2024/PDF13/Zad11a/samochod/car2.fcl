@@ -1,0 +1,52 @@
+FUNCTION_BLOCK car	
+
+VAR_INPUT				
+	distance: REAL;
+	speed : REAL;
+END_VAR
+
+VAR_OUTPUT				
+	change : REAL;
+END_VAR
+
+FUZZIFY distance	
+	TERM very_near := (0, 1) (75, 1) (200, 0);
+	TERM near := (100, 0) (200, 1) (300,0) ; 
+	TERM far := (250, 0) (325, 1) (400,0);
+	TERM very_far := (350, 0) (420, 1) (500, 1);
+END_FUZZIFY
+
+FUZZIFY speed
+	TERM very_slow := (0, 1) (10, 1) (20, 0);
+	TERM slow := (15, 0) (20, 1) (40,0) ;
+	TERM fast := (25,0) (70,1) (100,0);
+	TERM very_fast := (90, 0) (150, 1) (200, 1);
+END_FUZZIFY
+
+DEFUZZIFY change
+	TERM big_reduce := (-20, 1) (-15, 1) (-10, 0);
+	TERM reduce := (-15,0) (-10,1) (-5,0);
+	TERM keep := (-6,0) (0,1) (3,0);
+	TERM increase := (0,0) (5,1) (7,0);
+	TERM big_increase := (5,0) (10,1) (15,1)
+	METHOD : COG;		
+	DEFAULT := 0;		
+END_DEFUZZIFY
+
+RULEBLOCK No1
+	AND : MIN;			
+	ACT : MIN;			
+	ACCU : MAX;			
+	
+	RULE 1 : IF distance IS near AND speed IS slow THEN change IS keep;
+	RULE 2 : IF distance IS near AND speed IS fast THEN change IS big_reduce; 
+	RULE 3 : IF distance IS far AND speed IS slow THEN change IS increase;
+	RULE 4 : IF distance IS far AND speed IS fast THEN change IS keep;
+	RULE 5 : IF distance IS very_near AND speed IS very_fast THEN change IS big_reduce;
+	RULE 6 : IF distance IS very_far AND speed IS very_slow THEN change IS big_increase;
+	
+END_RULEBLOCK
+
+
+END_FUNCTION_BLOCK
+

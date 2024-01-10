@@ -1,0 +1,52 @@
+FUNCTION_BLOCK ryzyko
+
+VAR_INPUT
+    wiek : REAL;
+	moc: REAL;
+END_VAR
+
+VAR_OUTPUT
+    ryz : REAL;
+END_VAR
+
+FUZZIFY wiek
+	TERM mlody := (20, 1) (40, 0);
+    TERM sredni := (30,0) (40,1) (50, 0);
+	TERM stary := (40, 0) (60, 1);
+END_FUZZIFY
+
+FUZZIFY moc
+    TERM mala:= (20, 1) (70, 0);
+    TERM srednia := (70,0) (120,1) (170, 0);
+	TERM duza := (120, 0) (170, 1);
+END_FUZZIFY
+
+DEFUZZIFY  ryz
+    TERM niskie:= (5, 1) (10,0) ; 
+    TERM srednion := (5, 0) (10, 1) (15,0);
+	TERM srednie := (10, 0) (15, 1) (20,0);
+	TERM sredniow := (15, 0) (20, 1) (25,0);
+	TERM wysokie := (20, 0) (25, 1);
+    METHOD : COG;
+    DEFAULT := 0;
+END_DEFUZZIFY
+
+RULEBLOCK No1
+    AND : MIN;
+    ACT : MIN;
+    ACCU : MAX;
+
+    RULE 1 : IF wiek IS mlody AND moc IS duza THEN ryz IS wysokie;
+    RULE 2 : IF wiek IS mlody AND moc IS srednia THEN ryz IS sredniow;  
+    RULE 3 : IF wiek IS sredni AND moc IS duza THEN ryz IS sredniow;
+    RULE 4 : IF wiek IS sredni AND moc IS srednia THEN ryz IS srednie;	
+    RULE 5 : IF wiek IS sredni AND moc IS mala THEN ryz IS srednion;	
+    RULE 6 : IF wiek IS mlody AND moc IS mala THEN ryz IS srednie;	
+    RULE 7 : IF wiek IS stary AND moc IS duza THEN ryz IS srednie;
+    RULE 8 : IF wiek IS stary AND moc IS srednia THEN ryz IS srednion;  
+    RULE 9 : IF wiek IS stary AND moc IS mala THEN ryz IS niskie;
+
+               
+END_RULEBLOCK
+
+END_FUNCTION_BLOCK
